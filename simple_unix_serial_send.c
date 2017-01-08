@@ -3,6 +3,8 @@
 
 #include "simstruc.h"
 
+#define FRDM_BOARD_DEV "/dev/ttyACM0"
+
 static void mdlInitializeSizes(SimStruct *S)
 {
     ssSetNumSFcnParams(S, 0);
@@ -46,7 +48,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         FILE* fPtr;
         int8_T data = *inputPtrs[i];
 
-        fPtr = fopen("/dev/ttyACM0", "w");
+        fPtr = fopen(FRDM_BOARD_DEV, "w");
         fputc(data, fPtr);
         fclose(fPtr);
     }
