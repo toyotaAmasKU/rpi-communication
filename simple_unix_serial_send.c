@@ -3,7 +3,15 @@
 
 #include "simstruc.h"
 
+#include <sys/stat.h>
+
 #define FRDM_BOARD_DEV "/dev/ttyACM0"
+
+int is_frdm_board_exist(void)
+{
+    struct stat st;
+    return !(stat(FRDM_BOARD_DEV, &st));
+}
 
 static void mdlInitializeSizes(SimStruct *S)
 {
@@ -38,19 +46,22 @@ static void mdlInitializeSampleTimes(SimStruct *S)
 
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
-    InputPtrsType rawInputPtrs = ssGetInputPortSignalPtrs(S, 0);
-    InputUInt8PtrsType inputPtrs = (InputUInt8PtrsType)rawInputPtrs;
-    int_T i;
-    int_T inputPortWidth = ssGetInputPortWidth(S, 0);
-
-    for(i = 0; i < inputPortWidth; i++)
+    if(is_frdm_board_exist())
     {
-        FILE* fPtr;
-        int8_T data = *inputPtrs[i];
+        InputPtrsType rawInputPtrs = ssGetInputPortSignalPtrs(S, 0);
+        InputUInt8PtrsType inputPtrs = (InputUInt8PtrsType)rawInputPtrs;
+        int_T i;
+        int_T inputPortWidth = ssGetInputPortWidth(S, 0);
 
-        fPtr = fopen(FRDM_BOARD_DEV, "w");
-        fputc(data, fPtr);
-        fclose(fPtr);
+        for(i = 0; i < inputPortWidth; i++)
+        {
+            FILE* fPtr;
+            int8_T data = *inputPtrs[i];
+
+            fPtr = fopen(FRDM_BOARD_DEV, "w");
+            fputc(data, fPtr);
+            fclose(fPtr);
+        }
     }
 }
 
