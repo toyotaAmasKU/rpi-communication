@@ -7,7 +7,7 @@
 
 #define FRDM_BOARD_DEV "/dev/ttyACM0"
 
-int is_frdm_board_exist(void)
+int isFRDMBoardExist(void)
 {
     struct stat st;
     return !(stat(FRDM_BOARD_DEV, &st));
@@ -46,7 +46,7 @@ static void mdlInitializeSampleTimes(SimStruct *S)
 
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
-    if(is_frdm_board_exist())
+    if(isFRDMBoardExist())
     {
         InputPtrsType rawInputPtrs = ssGetInputPortSignalPtrs(S, 0);
         InputUInt8PtrsType inputPtrs = (InputUInt8PtrsType)rawInputPtrs;
@@ -55,7 +55,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 
         for(i = 0; i < inputPortWidth; i++)
         {
-            FILE* fPtr;
+            FILE *fPtr;
             int8_T data = *inputPtrs[i];
 
             fPtr = fopen(FRDM_BOARD_DEV, "w");
@@ -65,7 +65,7 @@ static void mdlOutputs(SimStruct *S, int_T tid)
     }
 }
 
-static void mdlTerminate(SimStruct *s)
+static void mdlTerminate(SimStruct *S)
 {
 }
 
