@@ -1,3 +1,6 @@
 *.autosave
 *.swp
 *.mexw64
+*.elf
+main_ert_rtw/
+slprj/
