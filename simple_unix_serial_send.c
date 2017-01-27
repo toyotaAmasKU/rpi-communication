@@ -52,16 +52,16 @@ static void mdlOutputs(SimStruct *S, int_T tid)
         InputUInt8PtrsType inputPtrs = (InputUInt8PtrsType)rawInputPtrs;
         int_T i;
         int_T inputPortWidth = ssGetInputPortWidth(S, 0);
+        FILE *fPtr;
+        fPtr = fopen(FRDM_BOARD_DEV, "w");
 
         for(i = 0; i < inputPortWidth; i++)
         {
-            FILE *fPtr;
             int8_T data = *inputPtrs[i];
 
-            fPtr = fopen(FRDM_BOARD_DEV, "w");
             fputc(data, fPtr);
-            fclose(fPtr);
         }
+        fclose(fPtr);
     }
 }
 
