@@ -1,5 +1,11 @@
 # rpi-communication
 
+### About:
+##### Author:
+###### [Natchanan Thongtem](https://github.com/psychoAB)
+##### Description:
+use raspberry pi handle communication between computer and Freedom development board using Simulink 
+
 ### How to build:
 1. compile simple_unix_serial_send.c
 ```
