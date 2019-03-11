@@ -1,4 +1,4 @@
-rearranged# rpi-communication
+# rpi-communication
 
 ###### use raspberry pi handle communication between computer and Freedom development board using Simulink 
 
