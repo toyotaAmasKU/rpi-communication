@@ -1,9 +1,9 @@
-# rpi-communication
-
-###### use raspberry pi handle communication between computer and Freedom development board using Simulink 
+# rpi-communication 
 
 ##### Author:
 ###### [Natchanan Thongtem](https://github.com/psychoAB)
+##### Description:
+###### use raspberry pi handle communication between computer and Freedom development board using Simulink 
 ___
 
 ### Requirement:
