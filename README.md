@@ -3,7 +3,7 @@
 ##### Author:
 ###### [Natchanan Thongtem](https://github.com/psychoAB)
 ##### Description:
-###### use raspberry pi handle communication between computer and Freedom development board using Simulink 
+###### use Raspberry Pi handle communication between computer and Freedom development board using Simulink 
 ___
 
 ### Requirement:
